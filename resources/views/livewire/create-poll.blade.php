@@ -1,7 +1,7 @@
 <div>
     <form wire:submit.prevent="createPoll">
         <label>Poll Title</label>
-        <input class="bg-indigo-100 rounded ring-2 ring-indigo-200 ring-inset" type="text" wire:model="title" />
+        <input class="bg-indigo-100 rounded ring-2 ring-indigo-200 ring-inset" type="text" wire:model.live="title" />
         @error('title')
             <div class="text-red-500">{{ $message }}</div>
         @enderror
@@ -16,7 +16,7 @@
                     <label>Option {{ $index + 1 }} </label>
                 </div>
                 <div class="flex gap-2">
-                    <input class="bg-indigo-100 rounded ring-2 ring-indigo-300 ring-inset" type="text" wire:model="options.{{ $index }}">
+                    <input class="bg-indigo-100 rounded ring-2 ring-indigo-300 ring-inset" type="text" wire:model.live="options.{{ $index }}">
                     
                     <button class="btn bg-white {{ count($options) === 1 ? 'opacity-50 cursor-not-allowed' : '' }}" 
                             {{ count($options) === 1 ? 'disabled' : '' }}
